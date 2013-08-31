@@ -7,7 +7,7 @@ class Cookie
     class Attribute
 
       include Concord::Public.new(:name)
-      include Adamantium::Flat
+      include Adamantium
 
       def to_s
         name
@@ -18,7 +18,7 @@ class Cookie
 
         include Equalizer.new(:attributes)
         include Enumerable
-        include Adamantium::Flat
+        include Adamantium
 
         attr_reader :attributes
         protected   :attributes
@@ -102,15 +102,15 @@ class Cookie
         private
 
         def serialized_value
-          super.clone.gmtime.rfc2822
+          super.dup.gmtime.rfc2822
         end
       end
 
       # The Secure attribute
-      Secure = new('Secure'.freeze)
+      Secure = new('Secure')
 
       # The HttpOnly attribute
-      HttpOnly = new('HttpOnly'.freeze)
+      HttpOnly = new('HttpOnly')
 
       # Already expired {Expires} attribute useful for cookie deletion
       Expired = Expires.new(Time.at(0))
