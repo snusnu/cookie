@@ -4,14 +4,11 @@
 [![Build Status](https://secure.travis-ci.org/snusnu/cookie.png?branch=master)][travis]
 [![Dependency Status](https://gemnasium.com/snusnu/cookie.png)][gemnasium]
 [![Code Climate](https://codeclimate.com/github/snusnu/cookie.png)][codeclimate]
-[![Coverage Status](https://coveralls.io/repos/snusnu/cookie/badge.png?branch=master)][coveralls]
 
 [gem]: https://rubygems.org/gems/cookie
 [travis]: https://travis-ci.org/snusnu/cookie
 [gemnasium]: https://gemnasium.com/snusnu/cookie
 [codeclimate]: https://codeclimate.com/github/snusnu/cookie
-[coveralls]: https://coveralls.io/r/snusnu/cookie
-
 
 ## Credits
 
