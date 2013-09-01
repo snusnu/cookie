@@ -35,7 +35,7 @@ AccessControl:
 
 # Limit line length
 LineLength:
-  Max: 79
+  Max: 141 # only specs violate 79
 
 # Disable documentation checking until a class needs to be documented once
 Documentation:
@@ -64,3 +64,15 @@ Blocks:
 # Do not favor aligned parameters in method calls
 AlignParameters:
   Enabled: false
+
+HashSyntax:
+  Enabled: false
+
+SpaceInsideBrackets:
+  Enabled: false
+
+Lambda:
+  Enabled: false # i personally like the look of multiline ->(arg) {} lambdas
+
+AndOr:
+  Enabled: false # we agree to use and/or for control flow
