@@ -41,9 +41,7 @@ class Cookie
     end
 
     def fetch(name)
-      @entries.fetch(name) do
-        raise UnknownCookieError, UNKNOWN_COOKIE_MSG % name.inspect
-      end
+      get(name) or raise UnknownCookieError, UNKNOWN_COOKIE_MSG % name.inspect
     end
 
     def get(name)
