@@ -5,6 +5,7 @@ class Cookie
   # Models a registry of {Cookie} instances
   class Registry
 
+    include Enumerable
     include Equalizer.new(:entries)
     include Adamantium::Flat
 
