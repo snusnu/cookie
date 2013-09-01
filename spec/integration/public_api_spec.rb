@@ -44,7 +44,7 @@ describe Cookie do
     expect(Cookie.coerce(c.to_s)).to eql(cookie.encode)
 
     c = c.decode
-    expect(Cookie.coerce(c.to_s)).to eql(cookie.encode.decode)
+    expect(Cookie.coerce(c.to_s)).to eql(cookie)
   end
 
   it 'supports #name and #value' do
