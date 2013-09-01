@@ -87,12 +87,6 @@ class Cookie
       # The Max-Age attribute
       class MaxAge < Binary
         NAME = 'MaxAge'.freeze
-
-        private
-
-        def serialized_value
-          super.to_i
-        end
       end
 
       # The Expires attribute

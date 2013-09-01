@@ -16,13 +16,10 @@ class Cookie
   # An empty frozen hash
   EMPTY_HASH = {}.freeze
 
-  # An empty frozen string
-  EMPTY_STRING = ''.freeze
-
   # Helper for cookie deletion
   class Empty < self
     def initialize(name)
-      super(name, EMPTY_STRING)
+      super(name, nil)
     end
   end
 

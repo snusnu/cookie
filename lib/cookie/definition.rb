@@ -11,7 +11,7 @@ class Cookie
     class Delete < self
 
       def initialize(name, attributes)
-        super(Cookie::Empty.new(name), attributes.merge(Attribute::Expired))
+        super(Empty.new(name), attributes.merge(Attribute::Expired))
       end
 
     end # class Delete
@@ -65,11 +65,7 @@ class Cookie
     private
 
     def with_attribute(attribute)
-      new(cookie, attributes.merge(attribute))
-    end
-
-    def new(cookie, attributes)
-      self.class.new(cookie, attributes)
+      self.class.new(cookie, attributes.merge(attribute))
     end
 
   end # class Definition
