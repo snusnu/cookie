@@ -16,16 +16,9 @@ class Cookie
       # Models a set of attributes used within a {Definition}
       class Set
 
-        include Equalizer.new(:attributes)
+        include Concord.new(:attributes)
         include Enumerable
         include Adamantium
-
-        attr_reader :attributes
-        protected   :attributes
-
-        def initialize(attributes = EMPTY_HASH)
-          @attributes = attributes
-        end
 
         def each(&block)
           return to_enum unless block
@@ -34,13 +27,28 @@ class Cookie
         end
 
         def merge(attribute)
-          self.class.new(attributes.merge(attribute.name => attribute))
+          Set.new(attributes.merge(attribute.name => attribute))
         end
 
         def to_s
-          map(&:to_s).join(COOKIE_SEPARATOR)
+          "#{COOKIE_SEPARATOR}#{map(&:to_s).join(COOKIE_SEPARATOR)}"
         end
         memoize :to_s
+
+        # An empty {Set} to be serialized to {EMPTY_STRING}
+        class Empty < self
+
+          def initialize
+            super(EMPTY_HASH)
+          end
+
+          def to_s
+            EMPTY_STRING
+          end
+
+        end # class Empty
+
+        EMPTY = Empty.new
 
       end # class Set
 

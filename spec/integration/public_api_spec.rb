@@ -93,7 +93,7 @@ describe Cookie::Definition do
 
   it 'supports all cookie attributes' do
     d = definition
-    expect(d.to_s).to eql('SID={"id": 11};')
+    expect(d.to_s).to eql('SID={"id": 11}')
 
     d = definition.with_domain('.foo.bar')
     expect(d.to_s).to eql('SID={"id": 11}; Domain=.foo.bar')

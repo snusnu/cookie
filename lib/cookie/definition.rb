@@ -25,7 +25,7 @@ class Cookie
     attr_reader :attributes
     protected   :attributes
 
-    def initialize(cookie, attributes = Attribute::Set.new)
+    def initialize(cookie, attributes = Attribute::Set::EMPTY)
       @cookie, @attributes = cookie, attributes
     end
 
@@ -58,7 +58,7 @@ class Cookie
     end
 
     def to_s
-      "#{cookie}#{COOKIE_SEPARATOR}#{attributes}".strip
+      "#{cookie}#{attributes}"
     end
     memoize :to_s
 
