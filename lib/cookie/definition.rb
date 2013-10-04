@@ -25,6 +25,10 @@ class Cookie
     attr_reader :attributes
     protected   :attributes
 
+    def self.build(name, value, attributes)
+      new(Cookie.new(name, value), attributes)
+    end
+
     def initialize(cookie, attributes = Attribute::Set::EMPTY)
       @cookie, @attributes = cookie, attributes
     end
@@ -46,11 +50,11 @@ class Cookie
     end
 
     def secure
-      with_attribute(Attribute::Secure)
+      with_attribute(Attribute::Secure.instance)
     end
 
     def http_only
-      with_attribute(Attribute::HttpOnly)
+      with_attribute(Attribute::HttpOnly.instance)
     end
 
     def delete

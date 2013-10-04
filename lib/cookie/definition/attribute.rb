@@ -9,6 +9,10 @@ class Cookie
       include Concord::Public.new(:name)
       include Adamantium
 
+      def self.coerce(name, value)
+        MAP.fetch(name.to_sym).build(value)
+      end
+
       def to_s
         name
       end
@@ -19,6 +23,13 @@ class Cookie
         include Concord.new(:attributes)
         include Enumerable
         include Adamantium
+
+        def self.coerce(attributes)
+          new(attributes.each_with_object({}) { |(name, value), hash|
+            attribute = Attribute.coerce(name, value)
+            hash[attribute.name] = attribute
+          })
+        end
 
         def each(&block)
           return to_enum unless block
@@ -52,6 +63,35 @@ class Cookie
 
       end # class Set
 
+      # Null attribute that serializes to an empty string
+      class Null < self
+        def to_s
+          EMPTY_STRING
+        end
+      end
+
+      # Abstract baseclass for attributes that have no value
+      #
+      # @abstract
+      class Unary < self
+
+        include AbstractType
+
+        INSTANCES = {}
+
+        def self.build(value)
+          value ? instance : Null
+        end
+
+        def self.instance
+          instance_name = self::NAME
+          INSTANCES.fetch(instance_name) {
+            INSTANCES[instance_name] = new(instance_name)
+          }
+        end
+
+      end
+
       # Abstract baseclass for attributes that consist of a name-value
       # pair
       #
@@ -63,6 +103,10 @@ class Cookie
 
         attr_reader :value
         protected   :value
+
+        def self.build(value)
+          new(value)
+        end
 
         def initialize(value)
           super(self.class::NAME)
@@ -109,13 +153,26 @@ class Cookie
       end
 
       # The Secure attribute
-      Secure = new('Secure')
+      class Secure < Unary
+        NAME = 'Secure'.freeze
+      end
 
       # The HttpOnly attribute
-      HttpOnly = new('HttpOnly')
+      class HttpOnly < Unary
+        NAME = 'HttpOnly'.freeze
+      end
 
       # Already expired {Expires} attribute useful for cookie deletion
       Expired = Expires.new(Time.at(0))
+
+      MAP = {
+        :domain    => Domain,
+        :path      => Path,
+        :max_age   => MaxAge,
+        :expires   => Expires,
+        :secure    => Secure,
+        :http_only => HttpOnly
+      }
 
     end # class Attribute
   end # class Definition
