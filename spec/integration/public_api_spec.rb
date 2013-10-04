@@ -59,10 +59,10 @@ describe Cookie do
   context 'encoding and decoding' do
     it 'defaults to base64' do
       encoded = cookie.encode
-      expect(encoded).to eql(Cookie.new(name, Base64.encode64(cookie.value)))
+      expect(encoded).to eql(Cookie.new(name, Base64.urlsafe_encode64(cookie.value)))
 
       decoded = encoded.decode
-      expect(decoded).to eql(Cookie.new(name, Base64.decode64(encoded.value)))
+      expect(decoded).to eql(Cookie.new(name, Base64.urlsafe_decode64(encoded.value)))
     end
 
     it 'supports custom encoders and decoders' do

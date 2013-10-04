@@ -28,12 +28,12 @@ class Cookie
 
   # Namespace for cookie encoders
   module Encoder
-    Base64 = ->(string) { ::Base64.encode64(string) }
+    Base64 = ->(string) { ::Base64.urlsafe_encode64(string) }
   end
 
   # Namespace for cookie decoders
   module Decoder
-    Base64 = ->(string) { ::Base64.decode64(string) }
+    Base64 = ->(string) { ::Base64.urlsafe_decode64(string) }
   end
 
   # Cookie error base class
