@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Cookie
-  class Definition
+  class Serializable
 
     # Baseclass for cookie attributes
     class Attribute
@@ -17,7 +17,7 @@ class Cookie
         name
       end
 
-      # Models a set of attributes used within a {Definition}
+      # Models a set of attributes used within a {Serializable} cookie
       class Set
 
         include Concord.new(:attributes)
@@ -175,5 +175,5 @@ class Cookie
       }
 
     end # class Attribute
-  end # class Definition
+  end # class Serializable
 end # class Cookie

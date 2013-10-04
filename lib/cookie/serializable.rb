@@ -4,7 +4,7 @@ class Cookie
 
   # Models a transient, new cookie on the server that can be serialized
   # into an HTTP 'Set-Cookie' header.
-  class Definition
+  class Serializable
 
     # Models a cookie that is supposed to be deleted when serialized
     # into an HTTP 'Set-Cookie' header

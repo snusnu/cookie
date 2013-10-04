@@ -85,11 +85,11 @@ describe Cookie do
   end
 end
 
-describe Cookie::Definition do
+describe Cookie::Serializable do
 
   include_context 'integration specs'
 
-  let(:definition) { Cookie::Definition.new(cookie) }
+  let(:definition) { Cookie::Serializable.new(cookie) }
 
   it 'supports all cookie attributes' do
     d = definition
