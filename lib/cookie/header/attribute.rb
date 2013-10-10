@@ -70,17 +70,15 @@ class Cookie
 
         include AbstractType
 
-        INSTANCES = {}
+        CACHE = {}
 
         def self.build(value)
           value ? instance : nil
         end
 
         def self.instance
-          instance_name = self::NAME
-          INSTANCES.fetch(instance_name) {
-            INSTANCES[instance_name] = new(instance_name)
-          }
+          name = self::NAME
+          CACHE.fetch(name) { CACHE[name] = new(name) }
         end
 
       end
