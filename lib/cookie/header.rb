@@ -3,8 +3,8 @@
 class Cookie
 
   # Models a transient, new cookie on the server that can be serialized
-  # into an HTTP 'Set-Cookie' header.
-  class Serializable
+  # into an HTTP 'Set-Cookie' header
+  class Header
 
     # Models a cookie that is supposed to be deleted when serialized
     # into an HTTP 'Set-Cookie' header
@@ -72,5 +72,5 @@ class Cookie
       self.class.new(cookie, attributes.merge(attribute))
     end
 
-  end # class Definition
+  end # class Header
 end # class Cookie

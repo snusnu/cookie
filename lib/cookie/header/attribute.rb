@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Cookie
-  class Serializable
+  class Header
 
     # Baseclass for cookie attributes
     class Attribute
@@ -175,5 +175,5 @@ class Cookie
       }
 
     end # class Attribute
-  end # class Serializable
+  end # class Header
 end # class Cookie

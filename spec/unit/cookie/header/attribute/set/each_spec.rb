@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Cookie::Serializable::Attribute::Set, '#each' do
+describe Cookie::Header::Attribute::Set, '#each' do
   let(:attributes) { described_class.new(entries) }
   let(:entries)    { Hash[name => attribute] }
   let(:attribute)  { double('attribute', :to_s => name) }

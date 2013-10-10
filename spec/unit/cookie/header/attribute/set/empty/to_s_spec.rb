@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Cookie::Serializable::Attribute::Set::Empty, '#to_s' do
+describe Cookie::Header::Attribute::Set::Empty, '#to_s' do
   subject { object.to_s }
 
   let(:object) { described_class.new }

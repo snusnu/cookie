@@ -81,6 +81,6 @@ class Cookie
 
 end # class Cookie
 
-require 'cookie/serializable'
-require 'cookie/serializable/attribute'
+require 'cookie/header'
+require 'cookie/header/attribute'
 require 'cookie/registry'
