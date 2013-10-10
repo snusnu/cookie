@@ -27,7 +27,7 @@ class Cookie
         def self.coerce(attributes)
           new(attributes.each_with_object({}) { |(name, value), hash|
             attribute = Attribute.coerce(name, value)
-            hash[attribute.name] = attribute
+            hash[attribute.name] = attribute if attribute
           })
         end
 
@@ -63,13 +63,6 @@ class Cookie
 
       end # class Set
 
-      # Null attribute that serializes to an empty string
-      class Null < self
-        def to_s
-          EMPTY_STRING
-        end
-      end
-
       # Abstract baseclass for attributes that have no value
       #
       # @abstract
@@ -80,7 +73,7 @@ class Cookie
         INSTANCES = {}
 
         def self.build(value)
-          value ? instance : Null
+          value ? instance : nil
         end
 
         def self.instance
