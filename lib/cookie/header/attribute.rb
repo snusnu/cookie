@@ -9,8 +9,14 @@ class Cookie
       include Concord::Public.new(:name)
       include Adamantium
 
+      REGISTRY = {}
+
       def self.coerce(name, value)
-        MAP.fetch(name.to_sym).build(value)
+        REGISTRY.fetch(name.to_sym).build(value)
+      end
+
+      def self.register_as(name)
+        REGISTRY[name.to_sym] = self
       end
 
       def to_s
@@ -119,21 +125,25 @@ class Cookie
 
       # The Domain attribute
       class Domain < Binary
+        register_as :domain
         NAME = 'Domain'.freeze
       end
 
       # The Path attribute
       class Path < Binary
+        register_as :path
         NAME = 'Path'.freeze
       end
 
       # The Max-Age attribute
       class MaxAge < Binary
+        register_as :max_age
         NAME = 'MaxAge'.freeze
       end
 
       # The Expires attribute
       class Expires < Binary
+        register_as :expires
         NAME = 'Expires'.freeze
 
         private
@@ -145,25 +155,18 @@ class Cookie
 
       # The Secure attribute
       class Secure < Unary
+        register_as :secure
         NAME = 'Secure'.freeze
       end
 
       # The HttpOnly attribute
       class HttpOnly < Unary
+        register_as :http_only
         NAME = 'HttpOnly'.freeze
       end
 
       # Already expired {Expires} attribute useful for cookie deletion
       Expired = Expires.new(Time.at(0))
-
-      MAP = {
-        :domain    => Domain,
-        :path      => Path,
-        :max_age   => MaxAge,
-        :expires   => Expires,
-        :secure    => Secure,
-        :http_only => HttpOnly
-      }
 
     end # class Attribute
   end # class Header
