@@ -10,7 +10,8 @@ ClassVariable:
   exclude: []
 ControlParameter:
   enabled: true
-  exclude: []
+  exclude:
+  - Cookie::Header::Attribute::Unary#self.build # factory interface
 DataClump:
   enabled: true
   exclude: []
@@ -24,13 +25,14 @@ DuplicateMethodCall:
 FeatureEnvy:
   enabled: true
   exclude:
-  - Cookie::Definition::Delete#initialize # FIXME refactor
+  - Cookie::Header::Delete#initialize # FIXME refactor
 IrresponsibleModule:
   enabled: true
   exclude: []
 LongParameterList:
   enabled: true
-  exclude: []
+  exclude:
+  - Cookie::Header#self.build
   max_params: 2
   overrides:
     initialize:
@@ -58,13 +60,14 @@ TooManyInstanceVariables:
 TooManyMethods:
   enabled: true
   exclude:
-  - Cookie::Definition
+  - Cookie::Header
   max_methods: 10
 TooManyStatements:
   enabled: true
   exclude:
   - each
   - Cookie::Registry#self.cookie_hash
+  - Cookie::Header::Attribute::Set#self.coerce
   max_statements: 2
 UncommunicativeMethodName:
   enabled: true
@@ -103,5 +106,5 @@ UnusedParameters:
 UtilityFunction:
   enabled: true
   exclude:
-  - Cookie::Definition::Delete#initialize # FIXME refactor
+  - Cookie::Header::Delete#initialize # FIXME refactor
   max_helper_calls: 0
