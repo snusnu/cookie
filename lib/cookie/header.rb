@@ -6,16 +6,6 @@ class Cookie
   # into an HTTP 'Set-Cookie' header
   class Header
 
-    # Models a cookie that is supposed to be deleted when serialized
-    # into an HTTP 'Set-Cookie' header
-    class Delete < self
-
-      def initialize(name, attributes)
-        super(Empty.new(name), attributes.merge(Attribute::Expired))
-      end
-
-    end # class Delete
-
     include Equalizer.new(:cookie, :attributes)
     include Adamantium::Flat
 
@@ -58,7 +48,7 @@ class Cookie
     end
 
     def delete
-      Delete.new(cookie.name, attributes)
+      new(Empty.new(cookie.name), attributes.merge(Attribute::Expired))
     end
 
     def to_s
@@ -69,7 +59,11 @@ class Cookie
     private
 
     def with_attribute(attribute)
-      self.class.new(cookie, attributes.merge(attribute))
+      new(cookie, attributes.merge(attribute))
+    end
+
+    def new(cookie, attributes)
+      self.class.new(cookie, attributes)
     end
 
   end # class Header
