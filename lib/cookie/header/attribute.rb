@@ -11,8 +11,6 @@ class Cookie
 
       REGISTRY = {}
 
-      DOUBLE_COLON = '::'.freeze
-
       def self.coerce(name, value)
         REGISTRY.fetch(name.to_sym).build(value)
       end

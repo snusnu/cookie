@@ -19,6 +19,15 @@ class Cookie
   # An empty frozen string
   EMPTY_STRING = ''.freeze
 
+  # Separates the cookie name from its value
+  NAME_VALUE_SEPARATOR = '='.freeze
+
+  # Separates cookies
+  COOKIE_SEPARATOR = '; '.freeze
+
+  # Separates ruby class names in a FQN
+  DOUBLE_COLON = '::'.freeze
+
   # Helper for cookie deletion
   class Empty < self
     def initialize(name)
@@ -41,12 +50,6 @@ class Cookie
 
   include Concord::Public.new(:name, :value)
   include Adamantium::Flat
-
-  # Separates the cookie name from its value
-  NAME_VALUE_SEPARATOR = '='.freeze
-
-  # Separates cookies
-  COOKIE_SEPARATOR = '; '.freeze
 
   def self.coerce(string)
     new(*string.split(NAME_VALUE_SEPARATOR, 2))
