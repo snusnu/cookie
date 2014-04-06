@@ -5,8 +5,7 @@ class Cookie
   # Models a registry of {Cookie} instances
   class Registry
 
-    include Enumerable
-    include Equalizer.new(:entries)
+    include Lupo.collection(:entries)
     include Adamantium::Flat
 
     # Message for {UnknownCookieError}
@@ -28,17 +27,8 @@ class Cookie
 
     private_class_method :cookie_hash
 
-    attr_reader :entries
-    protected   :entries
-
-    def initialize(entries = EMPTY_HASH)
-      @entries = entries
-    end
-
-    def each(&block)
-      return to_enum unless block
-      entries.each(&block)
-      self
+    def self.new(entries = EMPTY_HASH)
+      super
     end
 
     def fetch(name)

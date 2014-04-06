@@ -6,6 +6,7 @@ require 'base64'
 require 'concord'
 require 'adamantium'
 require 'abstract_type'
+require 'lupo'
 
 # Models an HTTP Cookie
 class Cookie
