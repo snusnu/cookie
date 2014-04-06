@@ -1,6 +1,6 @@
 # majoun
 
-[![Gem Version](https://badge.fury.io/rb/cookie.png)][gem]
+[![Gem Version](https://badge.fury.io/rb/majoun.png)][gem]
 [![Build Status](https://secure.travis-ci.org/snusnu/cookie.png?branch=master)][travis]
 [![Dependency Status](https://gemnasium.com/snusnu/cookie.png)][gemnasium]
 [![Code Climate](https://codeclimate.com/github/snusnu/cookie.png)][codeclimate]
