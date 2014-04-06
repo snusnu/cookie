@@ -6,21 +6,15 @@ class Cookie
   # into an HTTP 'Set-Cookie' header
   class Header
 
-    include Equalizer.new(:cookie, :attributes)
+    include Concord.new(:cookie, :attributes)
     include Adamantium::Flat
-
-    attr_reader :cookie
-    protected   :cookie
-
-    attr_reader :attributes
-    protected   :attributes
 
     def self.build(name, value, attributes)
       new(Cookie.new(name, value), attributes)
     end
 
-    def initialize(cookie, attributes = Attribute::Set::EMPTY)
-      @cookie, @attributes = cookie, attributes
+    def self.new(cookie, attributes = Attribute::Set::EMPTY)
+      super
     end
 
     def with_domain(domain)
