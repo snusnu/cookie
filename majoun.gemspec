@@ -3,7 +3,7 @@
 require File.expand_path('../lib/cookie/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name        = "cookie"
+  gem.name        = "majoun"
   gem.version     = Cookie::VERSION.dup
   gem.authors     = [ "Martin Gamsjaeger (snusnu)" ]
   gem.email       = [ "gamsnjaga@gmail.com" ]

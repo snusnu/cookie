@@ -1,4 +1,4 @@
-# cookie
+# majoun
 
 [![Gem Version](https://badge.fury.io/rb/cookie.png)][gem]
 [![Build Status](https://secure.travis-ci.org/snusnu/cookie.png?branch=master)][travis]
