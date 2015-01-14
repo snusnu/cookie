@@ -13,7 +13,7 @@ class Cookie
       new(Cookie.new(name, value), attributes)
     end
 
-    def self.new(cookie, attributes = Attribute::Set::EMPTY)
+    def initialize(cookie, attributes = Attribute::Set::EMPTY)
       super
     end
 

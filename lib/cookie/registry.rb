@@ -27,7 +27,7 @@ class Cookie
 
     private_class_method :cookie_hash
 
-    def self.new(entries = EMPTY_HASH)
+    def initialize(entries = EMPTY_HASH)
       super
     end
 
